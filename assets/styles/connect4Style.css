@@ -1,0 +1,217 @@
+:root {
+  --x: 4.5vw;
+}
+
+body {
+  height: 100vh;
+  background-color: hsl(0, 0%, 5%);
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: hidden;
+  transition: 0.2s;
+}
+
+/* menu start--------------------------------------------------------------------------------- */
+
+.playerTurn {
+  width: 100vw;
+  height: 10vh;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  opacity: 0;
+  transform: translateY(-10vh);
+  position: absolute;
+  top: 0em;
+}
+
+.playerTurnAnimation {
+  animation: popUp 3s ease;
+}
+
+@keyframes popUp {
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh);
+  }
+}
+
+
+.menu {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items: center;
+  background-color: hsl(0, 0%, 5%);
+  width: 100vw;
+  height: 30vh;
+  padding: 0;
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  transition: 1s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+
+.menu>h1 {
+  font-size: 5rem;
+  margin: 0.25em;
+  color: transparent;
+  background-image: linear-gradient(90deg, hsl(219, 70%, 32%), hsl(0, 71%, 32%));
+  background-clip: text;
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: moveBackground  5s infinite;
+  text-shadow: hsl(219, 70%, 20%) 0px 5px 300px;
+}
+
+.menu button {
+  grid-column: 1 / 4;
+  width: 20vw;
+  height: 5vh;
+  margin: 1em;
+  font-family: 'Quicksand', sans-serif;
+  border: none;
+  font-size: 2rem; 
+  border-radius: 20px;
+  background-image: linear-gradient(90deg, hsl(219, 70%, 32%), hsl(0, 71%, 32%));
+  background-size: 300% 300%;
+  background-position: left;
+  box-shadow: hsl(219, 70%, 20%) 0px 5px 50px;
+  animation: moveBackgroundAndShadow  5s infinite;
+  transition: 0.2s;
+  color: #fff;
+}
+.menu button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes moveBackgroundAndShadow {
+  50% {
+    background-position: right;
+    box-shadow: hsl(0, 65%, 20%) 0px 5px 50px;
+  }
+  100% {
+    background-position: left;
+    box-shadow: hsl(219, 70%, 20%) 0px 5px 50px;
+  }
+}
+
+@keyframes moveBackground {
+  50% {
+    background-position: right;
+    text-shadow: hsl(0, 65%, 20%) 0px 5px 300px;
+  }
+  100% {
+    background-position: left;
+    text-shadow: hsl(219, 70%, 20%) 0px 5px 300px;
+  }
+}
+
+.menu section {
+  content: '';
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.left {
+  background-color: hsl(219, 70%, 32%);
+  box-shadow: hsl(219, 70%, 40%) 0px 5px 50px;
+}
+
+.right {
+  background-color: hsl(0, 71%, 32%);
+  box-shadow: hsl(0, 65%, 40%) 0px 5px 50px;
+}
+
+.opacityAnimation {
+  animation: opacityAnimation 0.2;
+  opacity: 0;
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* menu end--------------------------------------------------------------------------------- */
+
+.grid-circles {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto auto;
+  width: auto;
+  place-items: center;
+}
+
+.grid-circles>div {
+  width:3vw;
+  height: 3vw;
+  border-radius: 50%;
+  padding: 0;
+  border: 0;
+  background-color: hsl(0, 0%, 20%);
+  margin: 1.25em;
+  box-shadow: hsl(0,0%, 5%) 0px 5px 50px;
+  transition: 1s;
+}
+
+
+
+.blueCircle::before {
+  content: '';
+  position: absolute;
+  width: var(--x);
+  height: var(--x);
+  border-radius: 50%;
+  background-color: hsl(219, 70%, 32%);
+  box-shadow: hsl(219, 70%, 10%) 0px 5px 50px;
+  animation: drop 1.5s;
+  transition: 1s;
+}
+
+.redCircle::before {
+  content: '';
+  position: absolute;
+  width: var(--x);
+  height: var(--x);
+  border-radius: 50%;
+  background-color: hsl(0, 71%, 32%);
+  box-shadow: hsl(0, 65%, 10%) 0px 5px 50px;
+  animation: drop 1.5s;
+  transition: 1s;
+}
+
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50vh);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pickable:hover {
+  background-color: hsl(0, 0%, 15%);
+}
+
